@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -9,8 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
     <div class="sidebar">
-        <h2>📂 分类导航</h2>
+        <div class="sidebar-header">
+            <h2>📂 分类导航</h2>
+            <button id="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
         <ul>
             <li onclick="showSection('welcome')">🏠 欢迎页</li>
             <li onclick="showSection('tools')">🛠️ 工具类</li>
@@ -36,24 +41,24 @@
         <div id="study" class="section">
             <h2>📚 学习类</h2>
             <ul>
-                <li><a href="https://www.coursera.org" target="_blank">Coursera</a></li>
-                <li><a href="https://www.khanacademy.org" target="_blank">Khan Academy</a></li>
-                <li><a href="https://www.edx.org" target="_blank">edX</a></li>
+                <li><a href="https://www.coursera.org" target="_blank"><i class="fas fa-graduation-cap"></i> Coursera</a></li>
+                <li><a href="https://www.khanacademy.org" target="_blank"><i class="fas fa-chalkboard-teacher"></i> Khan Academy</a></li>
+                <li><a href="https://www.edx.org" target="_blank"><i class="fas fa-university"></i> edX</a></li>
             </ul>
         </div>
         <div id="dev" class="section">
             <h2>👨‍💻 编程开发</h2>
             <ul>
-                <li><a href="https://github.com" target="_blank">GitHub</a></li>
-                <li><a href="https://stackoverflow.com" target="_blank">Stack Overflow</a></li>
-                <li><a href="https://jsfiddle.net" target="_blank">JSFiddle</a></li>
+                <li><a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://stackoverflow.com" target="_blank"><i class="fab fa-stack-overflow"></i> Stack Overflow</a></li>
+                <li><a href="https://jsfiddle.net" target="_blank"><i class="fas fa-code"></i> JSFiddle</a></li>
             </ul>
         </div>
         <div id="ai" class="section">
             <h2>🤖 AI 工具</h2>
             <ul>
-                <li><a href="https://poe.com" target="_blank">Poe</a></li>
-                <li><a href="https://www.midjourney.com" target="_blank">Midjourney</a></li>
+                <li><a href="https://poe.com" target="_blank"><i class="fas fa-brain"></i> Poe</a></li>
+                <li><a href="https://www.midjourney.com" target="_blank"><i class="fas fa-palette"></i> Midjourney</a></li>
             </ul>
         </div>
     </div>
@@ -61,6 +66,17 @@
         function showSection(id) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+        }
+
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('#theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
         }
     </script>
 </body>
